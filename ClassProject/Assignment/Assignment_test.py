@@ -1,7 +1,6 @@
-#This is a rough outline of the code 
+#This is a rough outline of the code and the functions
 # 1/11/26
 #Uploaded to git on 8/11/26
-
 RoomChoice = ["Single Room","Double Room","Deluxe Room","Suite Room"]
 
 def GetUserChoice(min, max):
@@ -19,7 +18,7 @@ def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None,
     Choice1 =  GetUserChoice(min, max)
     
     if Choice1 > max or Choice1 < min:
-        Repeat(Choice1,min,max)
+        Choice1 = Repeat(Choice1,min,max)
         var2 = array[Choice1 - 1]
         print(f"You've chosen {var2}")
         return var2
@@ -27,7 +26,6 @@ def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None,
             var2 = array[Choice1 - 1]
             print(f"You've chosen {var2}")
             return var2
-
     elif isinstance(units, str):
             print(f"You've chosen {Choice1} {units}")
             return Choice1
