@@ -4,19 +4,20 @@
 RoomChoice = ["Single Room","Double Room","Deluxe Room","Suite Room"]
 
 def GetUserChoice(min, max):
-    return int(input(f"Enter your choice {min}-{max}: "))
-
+    Choice = input(f"Enter your choice {min}-{max}: ")
+    if type(Choice) != int:
+         return(0)
+    return int(Choice)
+   
 def Repeat(var1, min, max):
     while var1 > max or var1 < min:
         print("Invalid Choice please try again")
         var1 = GetUserChoice(min, max)
         return var1
-    return var1
 
 def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None, secondaryBool= None, units = None):
 
     Choice1 =  GetUserChoice(min, max)
-    
     if Choice1 > max or Choice1 < min:
         Choice1 = Repeat(Choice1,min,max)
         var2 = array[Choice1 - 1]
