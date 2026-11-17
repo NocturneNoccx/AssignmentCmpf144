@@ -15,7 +15,7 @@ if __name__ == '__main__':
         print("Types of Room\n 1.Single Room \n 2.Double Room \n 3.Deluxe Room \n 4.Suite Room \n")
         UserRoom, UserIndex = UserChoice(1, 4,array=RoomChoice)
         print("Are you a Student or Public\n 1.Student\n 2.Public\n")
-        User_Status = UserChoice(1,2, bool=True, primaryBool="S", secondaryBool="Public")
+        User_Status = UserChoice(1,2, bool=True, primaryBool="Student", secondaryBool="Public")
 
         if User_Status == "Public":
             UserPrice = PublicPrice[UserIndex]
