@@ -70,7 +70,6 @@ def IsAmount(Text):
     return True
 
 def GetAmount():
-   
     Amount = input("Please insert amount of payment:")
     while not IsAmount(Amount):
         print("Invalid amount please try again")
@@ -85,8 +84,7 @@ def UserPay(Price, UserBalance= 0, logo = None):
     print("Payment Completed")
 
     if Price < 0:
-        print(f"Your change is RM{round(-Price, 2)}")  # New: shows change when the user overpays
-
+        print(f"Your change is RM{round(-Price, 2)}")
     if logo != None:
         with open(str(logo), "r", encoding="ascii") as FileLogo:
             print(FileLogo.read(), end="")
