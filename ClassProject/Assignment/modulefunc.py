@@ -1,3 +1,16 @@
+#Ui
+def heading(text, symbol="-"):
+    print(f"{text}")
+    print(symbol * len(text))
+
+def RoomTable(Rooms, StudentPrice, PublicPrice):
+    print(f"{'No':<4}{'Room Type':<14}{'Student':<10}{'Public':<10}")
+    i = 0
+    while i < len(Rooms):
+        print(f"{i + 1:<4}{Rooms[i]:<14}{'RM' + str(StudentPrice[i]):<10}{'RM' + str(PublicPrice[i]):<10}")
+        i = i + 1
+    print("Prices are per night")
+
 #Logic
 def GetUserChoice(min, max):
     Choice = input(f"Enter your choice {min}-{max}: ")
@@ -111,4 +124,4 @@ def Receipt(Title = None, Footer = None, **kwargs):
 
 #Debug
 if __name__ == '__main__':
-    Receipt(Title = "Kedai Ali", Footer = "Thank you", Item = "Milo Ais", Quantity = 2, Total_Price = "RM38.00")
+    heading("Hello world", symbol="*")
