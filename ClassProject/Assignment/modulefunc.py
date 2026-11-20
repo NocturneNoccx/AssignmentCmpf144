@@ -1,14 +1,14 @@
 def GetUserChoice(min, max):
     Choice = input(f"Enter your choice {min}-{max}: ")
     if not Choice.isdigit():
-         return(0)
+         return(min - 1)
     return int(Choice)
     
 def Repeat(var1, min, max):
     while var1 > max or var1 < min:
-        print("Invalid Choice please try again")
+        print("Invalid Choice please try again \n")
         var1 = GetUserChoice(min, max)
-        return var1
+    return var1
 
 def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None, secondaryBool= None, units = None):
 
@@ -18,17 +18,17 @@ def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None,
     if Choice > max or Choice < min:
         Choice = Repeat(Choice,min,max)
         var2 = array[Choice - 1]
-        print(f"You've chosen {var2}")
-        return var2, ChoiceIndex
+        print(f"You've chosen {var2} \n")
+        
     
     if isinstance(array, list):
             ChoiceIndex = Choice -1
             var2 = array[Choice - 1]
-            print(f"You've chosen {var2}")
-            return var2, ChoiceIndex
+            print(f"You've chosen {var2} \n")
+            
     
     elif isinstance(units, str):
-            print(f"You've chosen {Choice} {units}")
+            print(f"You've chosen {Choice} {units} \n")
             return Choice, ChoiceIndex
     
     if bool == True:
@@ -51,13 +51,14 @@ def CalculatePrice(Price, Nights):
 def Display(**kwargs):
     for key, value in kwargs.items():
         info = key.replace("_", " ")
-        print(f"{info}: {value}")
+        print(f"{info}: {value} \n")
 
-def UserPay(Price, UserBalance= 0, logo = None):
+def UserPay(Price, Currency="RM", logo = None):
     while(Price > 0):
-        print(f"Please Pay {Price}")
+        print(f"Please Pay {Currency} {Price}")
         Balance = float(input("Please insert amount of payment:"))
         Price -= Balance
+
     print("Payment Completed")
 
     if logo != None:

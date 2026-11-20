@@ -11,13 +11,13 @@ UserPrice = 0
 #Main
 if __name__ == '__main__':
     while True:
-        print("Welcome to Royal Park Hotel Room Rental System")
+        print("################ Welcome to Royal Park Hotel Room Rental System ################ \n")
         print("Types of Room\n 1.Single Room \n 2.Double Room \n 3.Deluxe Room \n 4.Suite Room \n")
         UserRoom, UserIndex = UserChoice(1, 4,array=RoomChoice)
         print("Are you a Student or Public\n 1.Student\n 2.Public\n")
         User_Status = UserChoice(1,2, bool=True, primaryBool="Student", secondaryBool="Public")
 
-        if User_Status == "Public":
+        if User_Status[0] == "Public":
             UserPrice = PublicPrice[UserIndex]
         else:
             UserPrice = StudentPrice[UserIndex]
