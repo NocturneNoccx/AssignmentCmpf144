@@ -6,6 +6,7 @@ from modulefunc import *
 RoomChoice = ["Single Room","Double Room","Deluxe Room","Suite Room"]
 StudentPrice = [50,75,100,150]
 PublicPrice = [80,120,150,200]
+EcoChoice = ["Energy saving room", "Towel reuse", "Both", "None"]
 UserPrice = 0
 
 #Main
@@ -26,9 +27,10 @@ if __name__ == '__main__':
 
         Nights_Stayed = UserChoice(1, 365, units="Nights")
         RoomPrice = CalculatePrice(UserPrice, Nights_Stayed[0])
-        Display(Room_type = UserRoom, Status = User_Status[0], Duration = (str(Nights_Stayed[0]) + " Nights"), RoomPrice = ("RM"+str(RoomPrice)))
+        UserEco = EcoStay(EcoChoice)
+        Display(Room_type = UserRoom, Status = User_Status[0], Duration = (str(Nights_Stayed[0]) + " Nights"), EcoOption = UserEco[0] , RoomPrice = ("RM"+str(RoomPrice)))
         Paid, Change = UserPay(RoomPrice, logo="logo.txt")
-        Receipt(Title = "Royal Park Hotel", Footer = "Thank you for staying with us \n", Name = UserName, Room_type = UserRoom, Status = User_Status[0], Duration = (str(Nights_Stayed[0]) + " Nights"), Total_Price = ("RM"+str(RoomPrice)), Paid = ("RM"+str(Paid)), Change = ("RM"+str(Change)))
+        Receipt(Title = "Royal Park Hotel", Footer = "Thank you for staying with us \n", Name = UserName, Room_type = UserRoom, Status = User_Status[0], Duration = (str(Nights_Stayed[0]) + " Nights"), Total_Price = ("RM"+str(RoomPrice)), EcoOption = UserEco[0], Paid = ("RM"+str(Paid)), Change = ("RM"+str(Change)))
         print("Do you want to continue?\n 0.Yes, 1.No")
         LoopContinue = UserChoice(0,1, bool=True, primaryBool="Yes", secondaryBool="No")
 

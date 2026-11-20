@@ -8,6 +8,7 @@ def heading(text, symbol="-"):
     print(f"{text}")
     print(symbol * len(text))
 
+#:< is string alignment
 def RoomTable(Rooms, StudentPrice, PublicPrice):
     print(f"{'No':<4}{'Room Type':<14}{'Student':<10}{'Public':<10}")
     i = 0
@@ -118,6 +119,13 @@ def UserPay(Price, logo = None):
             print(FileLogo.read(), end="")
     return Paid, Change
 
+def EcoStay(Options, Lowest = 21):
+    DisplayOption(Options, i=1)
+    Eco = UserChoice(1, len(Options), array=Options)
+
+    if Eco == "Towel reuse" or Eco == "Both":
+        print("Your towels will be reused unless you ask for new ones")
+    return Eco
 
 def Receipt(Title = None, Footer = None, **kwargs):
     print("\nReceipt:")
