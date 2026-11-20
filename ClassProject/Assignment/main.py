@@ -6,13 +6,18 @@ from modulefunc import *
 RoomChoice = ["Single Room","Double Room","Deluxe Room","Suite Room"]
 StudentPrice = [50,75,100,150]
 PublicPrice = [80,120,150,200]
+UserName = []
 UserPrice = 0
 
 #Main
 if __name__ == '__main__':
     while True:
-        print("################ Welcome to Royal Park Hotel Room Rental System ################ \n")
-        print("Types of Room\n 1.Single Room \n 2.Double Room \n 3.Deluxe Room \n 4.Suite Room \n")
+        print("Welcome to Royal Park Hotel Room Rental System\n")
+        UserName = input("Please Enter your Name:")
+        print("Types of Room: \n")
+        DisplayOption(RoomChoice, i=1)
+        print(f"Student Price RM{StudentPrice}")
+        print(f"Public Price RM{PublicPrice}")
         UserRoom, UserIndex = UserChoice(1, 4,array=RoomChoice)
         print("Are you a Student or Public\n 1.Student\n 2.Public\n")
         User_Status = UserChoice(1,2, bool=True, primaryBool="Student", secondaryBool="Public")
@@ -22,7 +27,7 @@ if __name__ == '__main__':
         else:
             UserPrice = StudentPrice[UserIndex]
 
-        Nights_Stayed = UserChoice(-365, 365, units="Nights")
+        Nights_Stayed = UserChoice(1, 365, units="Nights")
         RoomPrice = CalculatePrice(UserPrice, Nights_Stayed[0])
         Display(Room_type = UserRoom, Status = User_Status[0], Duration = (str(Nights_Stayed[0]) + " Nights"), RoomPrice = ("RM"+str(RoomPrice)))
         UserPay(RoomPrice, logo="logo.txt")

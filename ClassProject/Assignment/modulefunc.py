@@ -1,14 +1,19 @@
+#Logic
 def GetUserChoice(min, max):
     Choice = input(f"Enter your choice {min}-{max}: ")
     if not Choice.isdigit():
          return(min - 1)  
     return int(Choice)
 
-def Repeat(var1, min, max):
-    while var1 > max or var1 < min:
+def Repeat(var, min, max):
+    while var > max or var < min:
         print("Invalid Choice please try again")
-        var1 = GetUserChoice(min, max)
-    return var1  
+        var = GetUserChoice(min, max)
+    return var  
+
+def DisplayOption(array, i):
+    for i, choice in enumerate(array, start=i):
+        print(f"{i}:{choice}")
 
 def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None, secondaryBool= None, units = None):
 
@@ -51,6 +56,7 @@ def Display(**kwargs):
         info = key.replace("_", " ")
         print(f"{info}: {value}")
 
+#Easier to valid if make separate function than just using repeat()
 def IsAmount(Text):
     if len(Text) == 0:
         return False
@@ -91,5 +97,4 @@ def UserPay(Price, UserBalance= 0, logo = None):
 
 #Debug
 if __name__ == '__main__':
-    print("Please continue your Payment")
-    UserPay(1000, logo="logo.txt")
+    Receipt()
