@@ -83,18 +83,32 @@ def GetAmount():
     return float(Amount)
 
 def UserPay(Price, UserBalance= 0, logo = None):
+    Paid = 0
     while(Price > 0):
         print(f"Please Pay {Price}")
         Balance = GetAmount()
+        Paid += Balance
         Price -= Balance
     print("Payment Completed")
 
+    Change = 0
     if Price < 0:
-        print(f"Your change is RM{round(-Price, 2)}")
+        Change = round(-Price, 2)
+        print(f"Your change is RM{Change}")
     if logo != None:
         with open(str(logo), "r", encoding="ascii") as FileLogo:
             print(FileLogo.read(), end="")
+    return Paid, Change
+
+
+def Receipt(Title = None, Footer = None, **kwargs):
+    print("\nReceipt")
+    if Title != None:
+        print(Title)
+    Display(**kwargs)
+    if Footer != None:
+        print(Footer)
 
 #Debug
 if __name__ == '__main__':
-    Receipt()
+    Receipt(Title = "Kedai Ali", Footer = "Thank you", Item = "Milo Ais", Quantity = 2, Total_Price = "RM38.00")
