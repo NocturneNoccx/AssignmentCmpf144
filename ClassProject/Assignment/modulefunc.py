@@ -1,4 +1,9 @@
+import os
+import datetime
 #Ui
+def ClearScreen():
+    os.system("cls" if os.name == 'nt' else "clear")
+
 def heading(text, symbol="-"):
     print(f"{text}")
     print(symbol * len(text))
@@ -10,6 +15,10 @@ def RoomTable(Rooms, StudentPrice, PublicPrice):
         print(f"{i + 1:<4}{Rooms[i]:<14}{'RM' + str(StudentPrice[i]):<10}{'RM' + str(PublicPrice[i]):<10}")
         i = i + 1
     print("Prices are per night")
+
+def DisplayOption(array, i):
+    for i, choice in enumerate(array, start=i):
+        print(f"{i}:{choice}")
 
 #Logic
 def GetUserChoice(min, max):
@@ -24,10 +33,6 @@ def Repeat(var, min, max):
         var = GetUserChoice(min, max)
     return var  
 
-def DisplayOption(array, i):
-    for i, choice in enumerate(array, start=i):
-        print(f"{i}:{choice}")
-
 def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None, secondaryBool= None, units = None):
 
     Choice =  GetUserChoice(min, max)
@@ -40,11 +45,11 @@ def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None,
     if isinstance(array, list):
             ChoiceIndex = Choice -1
             var2 = array[Choice - 1]
-            print(f"You've chosen {var2}")
+            print(f"You've chosen {var2} \n")
             return var2, ChoiceIndex
 
     elif isinstance(units, str):
-            print(f"You've chosen {Choice} {units}")
+            print(f"You've chosen {Choice} {units} \n")
             return Choice, ChoiceIndex
 
     if bool == True:
@@ -57,7 +62,7 @@ def UserChoice(min, max, var2=None, array=None, bool = None, primaryBool = None,
              Choice = secondaryBool
              return Choice, ChoiceIndex
 
-    print(f"You've chosen {Choice}")
+    print(f"You've chosen {Choice} \n")
     return Choice, ChoiceIndex
 
 def CalculatePrice(Price, Nights):
@@ -95,10 +100,10 @@ def GetAmount():
         Amount = input("Please insert amount of payment:")
     return float(Amount)
 
-def UserPay(Price, UserBalance= 0, logo = None):
+def UserPay(Price, logo = None):
     Paid = 0
     while(Price > 0):
-        print(f"Please Pay {Price}")
+        print(f"Please Pay RM{Price}")
         Balance = GetAmount()
         Paid += Balance
         Price -= Balance
@@ -115,7 +120,7 @@ def UserPay(Price, UserBalance= 0, logo = None):
 
 
 def Receipt(Title = None, Footer = None, **kwargs):
-    print("\nReceipt")
+    print("\nReceipt:")
     if Title != None:
         print(Title)
     Display(**kwargs)
