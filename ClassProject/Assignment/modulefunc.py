@@ -15,7 +15,6 @@ def RoomTable(Rooms, StudentPrice, PublicPrice):
     while i < len(Rooms):
         print(f"{i + 1:<4}{Rooms[i]:<14}{'RM' + str(StudentPrice[i]):<10}{'RM' + str(PublicPrice[i]):<10}")
         i = i + 1
-    print("Prices are per night")
 
 def DisplayOption(array, i):
     for i, choice in enumerate(array, start=i):
